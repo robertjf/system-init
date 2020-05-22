@@ -33,7 +33,7 @@ install_shell() {
 install_dotfiles() {
     echo -e '\e[0;33mSetting up standard dotfiles\e[0m'
 
-    git clone https://github.com/aaronpowell/system-init ~/code/github/system-init
+    git clone https://github.com/robertjf/system-init ~/code/github/system-init
 
     LINUX_SCRIPTS_DIR="$( cd "$( dirname "$0" )" >/dev/null 2>&1 && pwd )"
 
@@ -78,13 +78,13 @@ install_git() {
     sudo add-apt-repository ppa:git-core/ppa --yes
     sudo apt update
     sudo apt install git -y
-    wget https://raw.githubusercontent.com/aaronpowell/system-init/master/common/.gitconfig --output-document ~/.gitconfig
+    wget https://raw.githubusercontent.com/robertjf/system-init/master/common/.gitconfig --output-document ~/.gitconfig
     git config --global core.autocrlf false
 
     ## Only setup cred manager if it's wsl
     if [[ "$WSLENV" ]]
     then
-        git config --global credential.helper '/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe'
+        git config --global credential.helper '/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe'
     fi
 }
 
