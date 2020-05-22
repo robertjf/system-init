@@ -17,6 +17,10 @@ install_shell() {
         log "Failed to set zsh as default shell: $CMD"
     }
 
+    ## zsh Spaceship theme. https://github.com/denysdovhan/spaceship-prompt
+    git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+    
     ## tmux
     {
         CMD="$( sudo apt install tmux urlview -y )"
